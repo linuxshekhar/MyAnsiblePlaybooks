@@ -1,0 +1,10 @@
+- name: Ansible Cron to Remote
+  hosts: all
+  tasks:
+    - name: Schedule Cron
+      become: true
+      cron:
+        name: Change Root Password Daily
+        user: "root"
+        special_time: daily
+        job: "{{ script_command  }}"
