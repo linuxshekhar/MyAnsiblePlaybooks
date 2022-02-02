@@ -1,0 +1,14 @@
+- name: Ansible Cron to Remote
+  hosts: all
+  tasks:
+    - name: Schedule Cron
+      become: true
+      cron:
+        name: "{{ cron_name }}"
+        user: "{{ cron_user }}"
+        minute: "{{ cron_min }}"
+        hour: "{{ cron_hour }}"
+        day: "{{ cron_day }}"
+        month: "{{ cron_month }}"
+        weekday: "{{ cron_weekday }}"
+        job: "{{ script_command }}"
