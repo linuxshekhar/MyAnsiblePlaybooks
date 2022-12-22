@@ -1,0 +1,33 @@
+---
+- name: Google Chrome Update
+  hosts: all
+  tasks:
+  - name: Google Chrome repo File check
+    stat:
+      path: "/etc/yum.repos.d/google-chrome.repo"
+    register: repofile
+
+  - name: Copy Google Chrome Repo File
+    copy:
+      src: "/<source of repo file>/google-chrome.repo"
+      dest: "/etc/yum.repos.d/google-chrome.repo"
+      owner: root
+      group: root
+      mode: 0644
+    when: not repofile.stat.exists
+
+  - name: update Google Chrome
+    yum:
+      name: google-chrome-stable
+      state: latest
+      update_cache: true
+
+  - name: Creating Shell Result
+    command: |
+      'rpm -qa |grep chrome | tee -a'
+    register: shell_output
+
+  - lineinfile:
+      path: results.txt
+      line: "{{ {inventory_hostname: shell_output.stdout} | string }}"
+      create: yes
