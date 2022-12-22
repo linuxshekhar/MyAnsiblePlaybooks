@@ -1,0 +1,51 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Commenting a line in syslog.
+    replace:
+      path: /etc/logrotate.d/syslog
+      regexp: '/var/log/messages'
+      replace: '#/var/log/messages'
+
+  - name: "Checking logrotate config file for messages"
+    stat:
+      path: /etc/logrotate.d/messages
+    register: logconffile
+
+  - name: "Create logrotate config file for messages"
+    when: not logconffile.stat.exists
+    file:
+      path: "/etc/logrotate.d/messages"
+      state: touch
+
+  - name: "Add config block to logrotate config file for /var/log/messages"
+    when:
+    - not logconffile.stat.exists
+    - ansible_os_family == "RedHat"
+    blockinfile:
+      path: "/etc/logrotate.d/messages"
+      block: |
+        /var/log/messages {
+           missingok
+           notifempty
+           maxsize=1G
+           weekly
+           rotate 4
+           copytruncate
+           dateext
+           compress
+        }
+
+  - name: "Verifying Changes in /etc/logrotate.d/syslog"
+    shell: grep messages /etc/logrotate.d/syslog
+    register: command_output1
+
+  - debug:
+      var: command_output1.stdout_lines
+
+  - name: "Verifying file /etc/logrotate.d/messages"
+    shell: cat /etc/logrotate.d/messages
+    register: command_output2
+
+  - debug:
+      var: command_output2.stdout_lines
