@@ -1,26 +1,12 @@
 # MyAnsiblePlaybooks
 Some Ansible Playbooks
 
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/cdk-prod/argo-java-job-template">
-    <img src="https://argo-workflows.readthedocs.io/en/latest/assets/logo.png" alt="ArgoLogo" width="80" height="80">
-    <img src="https://search.oracle.com/img/java-logo.avif" alt="JavaLogo" width="80" height="80">
-  </a>
   <h2 align="center">ARGO JAVA Template</h2>
   <h4 align="center">This repository is template repository for argo-java type jobs.</h4>
 </div>
 
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -28,12 +14,6 @@ Some Ansible Playbooks
       <a href="#initialinformation">Initial Information</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -49,8 +29,8 @@ Some Ansible Playbooks
 
 ### Built With
 
-* [![Argo Workflow][ArgoBadge]][ArgoUrl]
-* [![Java][JavaBadge]][JavaUrl]
+* [![Argo][Argo.js]][ArgoUrl]
+* [![Java][Java.js]][JavaUrl]
 
 ## Usage
 Job Input Variables:
@@ -76,14 +56,28 @@ To contribute to this repository, you can simply follow below steps:
 
 ## Contact
 
-Your Name - [Orchestration Team](IOPSAutomation@cdk.com)
+[Orchestration Team](IOPSAutomation@cdk.com)
 
+[CDK Global](https://www.cdkglobal.com)
+
+[![LinkedIn][linkedin-shield]][linkedin-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-![ArgoLogo](https://argo-workflows.readthedocs.io/en/latest/assets/logo.png) 
-![ArgoBadge](https://img.shields.io/badge/argo-FF2D20?style=for-the-badge&logo=argo&logoColor=white)
-![ArgoUrl](https://argo-workflows.readthedocs.io/en/latest/)
-![JavaLogo](https://search.oracle.com/img/java-logo.avif)
-![JavaBadge](https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=java&logoColor=white)
-![JavaUrl](https://www.java.com/en/)
-![cdkurl](https://www.cdkglobal.com)
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[Argo.js]: (https://img.shields.io/badge/argo-FF2D20?style=for-the-badge&logo=argo&logoColor=white)
+[ArgoUrl]: (https://argo-workflows.readthedocs.io/en/latest/)
+[Java.js]: (https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=java&logoColor=white)
+[JavaUrl]: (https://www.java.com/en/)
+[CDKurl]: (https://www.cdkglobal.com)
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/company/cdknorthamerica
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/argo-java-job-template.svg?style=for-the-badge
+[contributors-url]: https://github.com/cdk-prod/argo-java-job-template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/argo-java-job-template.svg?style=for-the-badge
+[forks-url]: https://github.com/cdk-prod/argo-java-job-template/network/members
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/argo-java-job-template.svg?style=for-the-badge
+[stars-url]: https://github.com/cdk-prod/argo-java-job-template/stargazers
