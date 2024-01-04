@@ -29,16 +29,15 @@ Some Ansible Playbooks
 
 ### Built With
 
-* [![Argo][Argo.js]][ArgoUrl]
-* [![Java][Java.js]][JavaUrl]
+* [![Argo][Argo.js]][Argo-url]
+* [![Java][Java.js]][Java-url]
 
 ## Usage
 Job Input Variables:
   - **java_version**: As of now, Java 17 is supported.
   - **product-name**: it should be written as single string and in lower case letters. For example 'nebula', 'onepay', 'modern-pip'.
   - **application-name**: it should be single string lower-case name assigned to application, for example 'argo-java-build-test'
-  - **built-image** will be available at:
-  -- artifactory.cdk.com/docker-local/<-product-name->/<-application-name->:<-branch-name->.<-githib-runner-id->
+  - **built-image** will be available at: ```artifactory.cdk.com/docker-local/<-product-name->/<-application-name->:<-branch-name->.<-githib-runner-id->```
 
 ## Contribution
 
@@ -68,10 +67,6 @@ To contribute to this repository, you can simply follow below steps:
 [![Stargazers][stars-shield]][stars-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[Argo.js]: (https://img.shields.io/badge/argo-FF2D20?style=for-the-badge&logo=argo&logoColor=white)
-[ArgoUrl]: (https://argo-workflows.readthedocs.io/en/latest/)
-[Java.js]: (https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=java&logoColor=white)
-[JavaUrl]: (https://www.java.com/en/)
 [CDKurl]: (https://www.cdkglobal.com)
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/cdknorthamerica
@@ -81,3 +76,7 @@ To contribute to this repository, you can simply follow below steps:
 [forks-url]: https://github.com/cdk-prod/argo-java-job-template/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/argo-java-job-template.svg?style=for-the-badge
 [stars-url]: https://github.com/cdk-prod/argo-java-job-template/stargazers
+[Argo.js]: (https://img.shields.io/badge/argo-FF2D20?style=for-the-badge&logo=argo&logoColor=white)
+[Argo-url]: (https://argo-workflows.readthedocs.io/en/latest/)
+[Java.js]: (https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=java&logoColor=white)
+[Java-url]: (https://www.java.com/en/)
