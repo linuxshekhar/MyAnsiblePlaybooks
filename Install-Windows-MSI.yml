@@ -1,0 +1,70 @@
+---
+- name: Install abcd MSI on Windows
+  hosts: windows_servers
+  gather_facts: no
+
+  tasks:
+    - name: Get OS Architecture using PowerShell
+      win_shell: |
+        if ((Get-WmiObject -Class Win32_OperatingSystem).OSArchitecture -eq '64-bit') {
+          Write-Output '64-bit'
+        } else {
+          Write-Output '32-bit'
+        }
+      register: os_arch
+
+    - name: Display Windows Architecture
+      debug:
+        msg: "Windows architecture is {{ os_arch.stdout }}"
+
+    - name: Get Windows version using PowerShell
+      win_shell: |
+        $osCaption = (Get-WmiObject -Class Win32_OperatingSystem).Caption
+        if ($osCaption -like '*Windows Server 2003*') {
+          Write-Output 'Windows Server 2003'
+        } elseif ($osCaption -like '*Windows Server 2008*') {
+          Write-Output 'Windows Server 2008'
+        } elseif ($osCaption -like '*Windows Server 2012*') {
+          Write-Output 'Windows Server 2012'
+        } elseif ($osCaption -like '*Windows Server 2016*') {
+          Write-Output 'Windows Server 2016'
+        } elseif ($osCaption -like '*Windows Server 2019*') {
+          Write-Output 'Windows Server 2019'
+        } elseif ($osCaption -like '*Windows 7*') {
+          Write-Output 'Windows 7'
+        } elseif ($osCaption -like '*Windows 8*') {
+          Write-Output 'Windows 8'
+        } elseif ($osCaption -like '*Windows 10*') {
+          Write-Output 'Windows 10'
+        } elseif ($osCaption -like '*Windows 11*') {
+          Write-Output 'Windows 11'
+        } else {
+          Write-Output 'Other Version'
+        }
+      register: windows_version
+
+    - name: Display detected Windows version
+      debug:
+        msg: "Detected Windows version is {{ windows_version.stdout }}"
+
+    - name: Copy abcd MSI to C drive (64-bit system)
+      win_copy:
+        src: abcd-{{ windows_version.stdout }}-64.msi
+        dest: C:\
+      when: "'64-bit' in os_arch.stdout"
+
+    - name: Install abcd MSI on 64-bit systems
+      win_shell: |
+        Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i C:\abcd-{{ windows_version.stdout }}-64.msi /quiet /norestart' -Wait
+      when: "'64-bit' in os_arch.stdout"
+
+    - name: Copy abcd MSI to C drive (32-bit system)
+      win_copy:
+        src: abcd-{{ windows_version.stdout }}-86.msi
+        dest: C:\
+      when: "'32-bit' in os_arch.stdout"
+
+    - name: Install abcd MSI on 32-bit systems
+      win_shell: |
+        Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i C:\abcd-{{ windows_version.stdout }}-86.msi /quiet /norestart' -Wait
+      when: "'32-bit' in os_arch.stdout"
